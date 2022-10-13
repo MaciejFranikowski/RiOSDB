@@ -1,0 +1,17 @@
+.section {
+    height: 100%;
+}
+
+.aaa {
+    height: 100% !important;
+    overflow: auto;
+}
+.errorAlert {
+    position: fixed !important;
+    width: fit-content;
+    padding: 1.5rem;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 2%;
+}

@@ -1,0 +1,30 @@
+.TestModal .modal-content {
+    color: whitesmoke;
+    background-color: var(--bs-body-color);
+}
+
+.TestModal-body {
+    background-color: #282c34;
+}
+
+.TestModal-header {
+    background-color: #393f4d;
+    border-bottom-color: black !important;
+}
+
+.TestModal-footer {
+    background-color: #393f4d;
+    border-top-color: black !important;
+}
+
+.TestModal input {
+    background-color: lightgray;
+}
+
+.TestModal-close {
+    color: white !important;
+}
+
+.DataControl {
+    resize: none;
+}

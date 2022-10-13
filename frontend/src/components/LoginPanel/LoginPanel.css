@@ -1,0 +1,22 @@
+.loginBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.loginPanel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.loginIcon {
+    margin-right: 1rem;
+}
+
+.loginButton {
+    margin-top: 0.3rem;
+}
+
+.loginUsername {
+    font-style: italic;
+}

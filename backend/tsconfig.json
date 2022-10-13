@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+      "moduleResolution": "node",
+		"sourceMap": true,
+		"outDir": "dist",
+		"resolveJsonModule": true,
+
+	  	/* Strict Type-Checking Options */
+		"strict": true,                           /* Enable all strict type-checking options. */
+		"noImplicitAny": true,                    /* Raise error on expressions and declarations with an implied 'any' type. */
+		"strictNullChecks": true,              	/* Enable strict null checks. */
+      	"emitDecoratorMetadata": true,
+      	"experimentalDecorators": true,
+		"esModuleInterop": true
+	},
+	"lib": ["es2015"],
+	"include": [
+		"src/**/*"
+	]
+}

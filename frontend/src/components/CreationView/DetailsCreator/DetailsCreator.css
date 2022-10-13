@@ -1,0 +1,28 @@
+.creatorHeader {
+    background-color: #393f4d;
+    padding: 1.5rem;
+    height: 7rem;
+}
+
+.detailsForm {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 2.5rem;
+    align-items: center;
+    text-align: center;
+}
+
+.detailsForm input, .detailsForm textarea {
+    width: 40rem;
+    background-color: lightgray;
+}
+
+.detailsForm label {
+    margin-top: 1rem;
+}
+
+.detailsForm textarea {
+    resize: vertical;
+    min-height: 300px;
+    max-height: 300px;
+}

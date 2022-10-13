@@ -1,0 +1,26 @@
+.LoginModal .modal-content {
+    color: whitesmoke;
+    background-color: var(--bs-body-color);
+}
+
+.LoginModal-body {
+    background-color: #282c34;
+}
+
+.LoginModal-header {
+    background-color: #393f4d;
+    border-bottom-color: black !important;
+}
+
+.LoginModal-footer {
+    background-color: #393f4d;
+    border-top-color: black !important;
+}
+
+.LoginModal input {
+    background-color: lightgray;
+}
+
+.LoginModal-close {
+    color: white !important;
+}

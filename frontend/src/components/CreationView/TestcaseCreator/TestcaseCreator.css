@@ -1,0 +1,58 @@
+.testcaseItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e233152;
+    border-width: 2px;
+    color: white;
+    padding: 1rem 2rem;
+}
+
+.iconsItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.NewTestcaseModal .modal-content {
+    color: whitesmoke;
+    background-color: var(--bs-body-color);
+}
+
+.NewTestcaseModal-body {
+    background-color: #282c34;
+}
+
+.NewTestcaseModal-header {
+    background-color: #393f4d;
+    border-bottom-color: black !important;
+}
+
+.NewTestcaseModal-footer {
+    background-color: #393f4d;
+    border-top-color: black !important;
+}
+
+.NewTestcaseModal input {
+    background-color: lightgray;
+}
+
+.NewTestcaseModal-close {
+    color: white !important;
+}
+
+.testcaseCreator {
+    background-color: #393f4d;
+    height: 100%;
+}
+
+.testcaseHeader {
+    background-color: #1e2331ee;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 7rem;
+}

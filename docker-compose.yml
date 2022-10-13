@@ -1,0 +1,40 @@
+version: "2"
+
+services:
+  nginx:
+    container_name: nginx_prod
+    build:
+      dockerfile: nginx/Dockerfile
+      context: .
+      args:
+          nginx_port: 80
+    ports:
+      - "80:80"
+    networks:
+      - main
+  backend:
+    container_name: backend_prod
+    build:
+      context: ./backend
+      args:
+        b_export: 5000
+    environment:
+      - NODE_ENV=production
+      - DOCKER_GID=963
+      - PORT=5000
+      - JWT_SECRET_KEY=super_secret_jwt_key
+      - DOMAIN_NAME=http://localhost
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+      - /tmp:/tmp
+    ports:
+      - "5000:5000"
+    networks:
+      - main
+networks:
+  main:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450
+
+

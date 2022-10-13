@@ -1,0 +1,58 @@
+version: "2"
+
+services:
+  nginx:
+    image: nginx
+    container_name: nginx-dev
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - main
+    volumes:
+      - ./nginx/dev.cfg:/etc/nginx/nginx.conf:ro
+  backend:
+    container_name: backend_dev
+    build:
+      context: ./backend
+      args:
+        b_export: 5000
+    environment:
+      - NODE_ENV=development
+      - DOCKER_GID=963
+      - PORT=5000
+      - JWT_SECRET_KEY=super_secret_jwt_key
+      - DOMAIN_NAME=http://localhost
+    volumes:
+      - ./backend:/code
+      - /code/node_modules
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+      - /tmp:/tmp
+    ports:
+      - "5000:5000"
+    networks:
+      - main
+  frontend:
+    container_name: frontend-dev
+    build:
+      context: ./frontend
+      args:
+        b_export: 3000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    networks:
+      - main
+    environment:
+      - NODE_ENV=development
+networks:
+  main:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450
+
+

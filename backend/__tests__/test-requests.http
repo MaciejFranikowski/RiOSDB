@@ -1,0 +1,136 @@
+###
+get http://localhost:5000/api/
+###
+post http://localhost:5000/api/run
+Content-Type: application/json
+
+{
+	"language":"fortran",
+	"code":"code bla bla",
+	"userId": 1,
+	"taskId":"1"
+}
+###
+post http://localhost:5000/api/run
+Content-Type: application/json
+
+{
+	"code":"code bla bla",
+	"userId": 1,
+	"taskId":"1"
+}
+###
+post http://localhost:5000/api/run
+Content-Type: application/json
+
+{
+	"language":"python",
+	"userId": 1,
+	"taskId": 2,
+	"code":"if __name__ == '__main__':\r\n    uservalue = input()\r\n    print(uservalue, end = '')\r\n    "
+}
+###
+post http://localhost:5000/api/createTask
+Content-Type: application/json
+
+{
+	"title":"Tytuł zadania",
+	"description":"nowe zadanie",
+	"userId":"1",
+	"testCases": [
+		{
+			"input": "5",
+			"desiredOutput": "4"
+		},
+		{
+			"input": "5",
+			"desiredOutput": "5"
+		},
+		{
+			"input": "5",
+			"desiredOutput": "5"
+		},
+		{
+			"input": "4",
+			"desiredOutput": "4"
+		},
+		{
+			"input": "2",
+			"desiredOutput": "2"
+		}
+	]
+}
+###
+GET http://localhost:5000/api/getTask?id=2
+###
+GET http://localhost:5000/api/getAllTasks
+###
+post http://localhost:5000/api/createTask
+Content-Type: application/json
+
+{
+	"title":"Pętle: silnia!",
+	"description":"Napisz program znajdujący silnię podanej liczby. Jeśli obliczenie jest niemożliwe do wykonania, wypisz 'niepoprawna liczba'.",
+	"userId":"1",
+	"testCases": [
+		{
+			"input": "2",
+			"desiredOutput": "2"
+		},
+		{
+			"input": "10",
+			"desiredOutput": "3628800"
+		},
+		{
+			"input": "0",
+			"desiredOutput": "1"
+		},
+		{
+			"input": "-5",
+			"desiredOutput": "Niepoprawna liczba"
+		}
+	]
+}
+###
+post http://localhost:5000/api/run
+Content-Type: application/json
+
+{
+	"language":"python",
+	"userId": 1,
+	"taskId": 1,
+	"code":"if __name__ == '__main__':\r\n    num = int(input())\r\n    factorial = 1\r\n    if num < 0:\r\n        print(\"Niepoprawna liczba\", end='')\r\n    elif num == 0:\r\n        print(\"1\", end='')\r\n    else:\r\n        for i in range(1, num + 1):\r\n            factorial = factorial * i\r\n        print(factorial, end='')\r\n"
+}
+###
+post http://localhost:5000/api/createTask
+Content-Type: application/json
+
+{
+	"title":"Python divison",
+	"description":"Divide 2 numbers. The first line should contain the result of integer division,  // . The second line should contain the result of float division,  / .",
+	"userId":1,
+	"testCases": [
+		{
+			"input": "4\n3\n",
+			"desiredOutput": "1\n1.3333333333333333\n"
+		},
+		{
+			"input": "0\n4\n",
+			"desiredOutput": "0\n0.0\n"
+		},
+		{
+			"input": "6\n3\n",
+			"desiredOutput": "2\n2.0\n"
+		}
+	]
+}
+###
+post http://localhost:5000/api/run
+Content-Type: application/json
+
+{
+	"language":"python",
+	"userId": 1,
+	"taskId":"4",
+	"code":"if __name__ == '__main__':\r\n    a = int(input())\r\n    b = int(input())\r\n    print(a\/\/b)\r\n    print(a\/b)\r\n"
+}

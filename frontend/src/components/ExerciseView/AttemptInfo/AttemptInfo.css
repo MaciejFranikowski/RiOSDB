@@ -1,0 +1,72 @@
+.accord-body{
+    max-height: 25vm; 
+    background-color: #1e2331ee;
+    color: white;
+}
+
+.accordion-body-text{
+    overflow-y: scroll;
+    line-height: 26px;
+    white-space: pre-line;
+}
+
+.accordion-body::-webkit-scrollbar {
+    display: none;
+  }
+
+.accordion-header{
+    background-color: #393f4d !important;
+    color: white !important;
+}
+
+.list-group-main .list-group-item:hover{
+    background-color: #23252b;
+}
+
+.list-group-main .list-group-item{
+    background-color: transparent;
+    border-width: 2px;
+    color: white;
+}
+
+.infos{
+    background-color: #393f4d;
+}
+
+.btn-run-tests{
+    margin:  10px !important;
+}
+
+.accord-infos > *{ 
+    background-color: #1e2331ee !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+.accord-group{
+    border: 0 !important;
+}
+
+.runs-list{
+    overflow-y: scroll;
+    max-height: 10vm;
+}
+
+.runs-list::-webkit-scrollbar {
+    display: none;
+  }
+
+.results{
+    margin-top: 10px;
+    margin-left: 3% !important;
+}
+
+.test-success{
+    color: green;
+    margin: 5px; 
+}
+
+.test-fail{
+    color: red;
+    margin: 5px; 
+}
