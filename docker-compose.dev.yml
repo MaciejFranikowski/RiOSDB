@@ -9,6 +9,9 @@ services:
     depends_on:
       - frontend
       - backend
+      - databaseMaster
+      - databaseSlave1
+      - databaseSlave2
     networks:
       - main
     volumes:
@@ -49,6 +52,44 @@ services:
       - main
     environment:
       - NODE_ENV=development
+  databaseMaster:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_DATABASE: test
+    networks:
+      - main
+  databaseSlave1:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_DATABASE: test
+    networks:
+      - main
+    depends_on:
+      - databaseMaster
+  databaseSlave2:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_DATABASE: test
+    networks:
+      - main
+    depends_on:
+      - databaseMaster
+
 networks:
   main:
     driver: bridge
