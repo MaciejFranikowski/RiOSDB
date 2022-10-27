@@ -21,27 +21,20 @@ export const AppDataSource = new DataSource({
   type: 'mysql',
   replication: {
     master: {
-      host: "databaseMaster",
+      host: "master",
       port: 3306,
-      username: "test",
-      password: "test",
+      username: "root",
+      password: "root",
       database: "test",
     },
     slaves: [{
-      host: "databaseSlave1",
+      host: "slave_1",
       port: 3306,
-      username: "test",
-      password: "test",
-      database: "test"
-    }, {
-      host: "databaseSlave2",
-      port: 3306,
-      username: "test",
-      password: "test",
+      username: "root",
+      password: "root",
       database: "test"
     }]
   },
-  synchronize:true,
   logging: false,
   entities: [UserEntity, TestEntity, TaskEntity],
   migrations: [],
