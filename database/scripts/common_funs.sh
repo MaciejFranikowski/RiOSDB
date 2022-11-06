@@ -10,7 +10,7 @@ function create_slave_replication_user_on_master() {
     REPL_PASSWORD=$6
 
     ## There's apparently a bug here so privileges have to be flushed beforehand
-    MYSQL_QUERY="DROP USER \"$REPL_USER\"@\"$SLAVE_HOST_IP\" IDENTIFIED BY \"$REPL_PASSWORD\";"
+    MYSQL_QUERY="DROP USER \"$REPL_USER\"@\"$SLAVE_HOST_IP\";"
     mysql --user="$MASTER_ROOT_USER" --password="$MASTER_ROOT_PASSWORD" --host="$MASTER_HOST_IP" -e "$MYSQL_QUERY"
     MYSQL_QUERY="FLUSH PRIVILEGES;"
     mysql --user="$MASTER_ROOT_USER" --password="$MASTER_ROOT_PASSWORD" --host="$MASTER_HOST_IP" -e "$MYSQL_QUERY"
@@ -56,6 +56,9 @@ function get_master_replication_file_and_position_and_update_slave () {
 
     REPL_LOG_FILE=$(eval "mysql --user=$MASTER_ROOT_USER --password=$MASTER_ROOT_PASSWORD --host=$MASTER_HOST_IP -e 'SHOW MASTER STATUS\G' | grep File | sed -n -e 's/^.*: //p'")
     REPL_LOG_POSITION=$(eval "mysql --user=$MASTER_ROOT_USER --password=$MASTER_ROOT_PASSWORD --host=$MASTER_HOST_IP -e 'SHOW MASTER STATUS\G' | grep Position | sed -n -e 's/^.*: //p'")
+
+    MYSQL_QUERY="STOP SLAVE;"
+    mysql --user="$SLAVE_ROOT_USER" --password="$SLAVE_ROOT_PASSWORD" --host="$SLAVE_HOST_IP" -e "$MYSQL_QUERY"
 
     MYSQL_QUERY="CHANGE MASTER TO MASTER_HOST = '$MASTER_HOST_IP', MASTER_USER = '$REPL_USER', MASTER_PASSWORD = '$REPL_PASSWORD', MASTER_LOG_FILE = '$REPL_LOG_FILE', MASTER_LOG_POS = $REPL_LOG_POSITION;"
     mysql --user="$SLAVE_ROOT_USER" --password="$SLAVE_ROOT_PASSWORD" --host="$SLAVE_HOST_IP" -e "$MYSQL_QUERY"
