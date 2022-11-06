@@ -11,6 +11,7 @@ services:
       - backend
       - master
       - slave_1
+      - slave_2
       - replication
     networks:
       - main
@@ -40,6 +41,7 @@ services:
     depends_on:
       - master
       - slave_1
+      - slave_2
       - replication
   frontend:
     container_name: frontend-dev
@@ -59,6 +61,7 @@ services:
     depends_on:
       - master
       - slave_1
+      - slave_2
       - replication
   master:
     image: mysql:5.7.27
@@ -94,6 +97,24 @@ services:
        ipv4_address: ${SLAVE_1_HOST_IP}
     depends_on:
       - master
+  slave_2:
+    image: mysql:5.7.27
+    container_name: ${SLAVE_2_HOSTNAME}
+    hostname: ${SLAVE_2_HOSTNAME}
+    volumes:
+      - ./database/conf/slave2.cnf:/etc/mysql/conf.d/my.cnf:ro
+      - ./database/data/slave2:/var/lib/mysql:rw
+      - /usr/share/zoneinfo/:/usr/share/zoneinfo/:ro
+    environment:
+      MYSQL_ROOT_PASSWORD: ${SLAVE_2_ROOT_PASSWORD}
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+    networks:
+      main:
+       ipv4_address: ${SLAVE_2_HOST_IP}
+    depends_on:
+      - master
   replication:
     image: ubuntu:18.04
     volumes:
@@ -111,12 +132,20 @@ services:
       SLAVE_1_ROOT_USER: ${SLAVE_1_ROOT_USER}
       SLAVE_1_ROOT_PASSWORD: ${SLAVE_1_ROOT_PASSWORD}
 
+      SLAVE_2_HOSTNAME: ${SLAVE_2_HOSTNAME}
+      SLAVE_2_HOST_IP: ${SLAVE_2_HOST_IP}
+      SLAVE_2_ROOT_USER: ${SLAVE_2_ROOT_USER}
+      SLAVE_2_ROOT_PASSWORD: ${SLAVE_2_ROOT_PASSWORD}
 
       REPL_USER: ${REPL_USER}
       REPL_PASSWORD: ${REPL_PASSWORD}
+
+      REPL_USER2: ${REPL_USER2}
+      REPL_PASSWORD2: ${REPL_PASSWORD2}
     depends_on:
       - master
       - slave_1
+      - slave_2
     command: bash ${REPL_SCRIPT_MOUNT_PATH}/master_slave.sh
 
 networks:

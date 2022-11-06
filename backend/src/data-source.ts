@@ -27,13 +27,22 @@ export const AppDataSource = new DataSource({
       password: "root",
       database: "test",
     },
-    slaves: [{
+    slaves: [
+    {
+      host: "slave_2",
+      port: 3306,
+      username: "root",
+      password: "root",
+      database: "test"
+    },
+    {
       host: "slave_1",
       port: 3306,
       username: "root",
       password: "root",
       database: "test"
-    }]
+    }
+    ]
   },
   synchronize:true,
   logging: false,

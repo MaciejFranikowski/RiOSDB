@@ -96,8 +96,6 @@ function setup_master_2_slave_replication() {
     REPL_PASSWORD=$8
 
     sleep 1
-    sleep 30
-
     create_slave_replication_user_on_master $MASTER_HOST_IP $MASTER_ROOT_USER $MASTER_ROOT_PASSWORD $SLAVE_HOST_IP $REPL_USER $REPL_PASSWORD
 
     sleep 1
