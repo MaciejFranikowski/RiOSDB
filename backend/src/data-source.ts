@@ -45,7 +45,7 @@ export const AppDataSource = new DataSource({
     ]
   },
   synchronize:true,
-  logging: false,
+  logging: true,
   entities: [UserEntity, TestEntity, TaskEntity],
   migrations: [],
   subscribers: [],
