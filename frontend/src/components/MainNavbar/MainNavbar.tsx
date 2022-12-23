@@ -24,12 +24,6 @@ function MainNavbar({ user, login, logout }: MainNavbarProps) {
           <Nav.Link className="pr-4" href="/exerciseList">
             Exercises
           </Nav.Link>
-          <Nav.Link className="pr-4" href="#features">
-            History
-          </Nav.Link>
-          <Nav.Link className="pr-4" href="#pricing">
-            Help
-          </Nav.Link>
           <NavLink className="mx-4 btn btn-primary" to="/createExercise">
             Create exercise
           </NavLink>
